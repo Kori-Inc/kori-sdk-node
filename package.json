@@ -1,0 +1,37 @@
+{
+  "name": "@kori/node",
+  "version": "0.1.0",
+  "description": "Official Node.js / TypeScript SDK for the Kori Merchant API: mobile-money collections, payouts, payment links and webhooks in Mali.",
+  "license": "MIT",
+  "author": "Kori <support@kori.ml>",
+  "homepage": "https://kori.ml",
+  "keywords": ["kori", "payments", "mobile-money", "orange-money", "wave", "moov", "mali", "xof"],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+      "require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": false,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "generate": "openapi-typescript ${OPENAPI_SPEC:-../docs-site/openapi.yaml} --default-non-nullable false -o src/generated/openapi.ts",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "openapi-typescript": "7.13.0",
+    "tsup": "8.5.1",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  },
+  "publishConfig": { "access": "public", "provenance": true }
+}
