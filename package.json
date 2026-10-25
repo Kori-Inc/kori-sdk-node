@@ -1,5 +1,5 @@
 {
-  "name": "@kori/node",
+  "name": "@korisdk/node",
   "version": "0.1.0",
   "description": "Official Node.js / TypeScript SDK for the Kori Merchant API: mobile-money collections, payouts, payment links and webhooks in Mali.",
   "license": "MIT",

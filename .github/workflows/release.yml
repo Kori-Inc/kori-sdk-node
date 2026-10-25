@@ -1,7 +1,7 @@
 name: Release
 
 # Publish to npm when a version tag (v0.1.0, v1.2.3…) is pushed. The tag must match
-# package.json's version. Needs an NPM_TOKEN secret with publish rights on @kori.
+# package.json's version. Needs an NPM_TOKEN secret with publish rights on @korisdk/node.
 on:
   push:
     tags: ['v*']

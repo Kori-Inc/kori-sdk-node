@@ -1,11 +1,11 @@
-# @kori/node
+# @korisdk/node
 
 The official Node.js and TypeScript SDK for the [Kori Merchant API](https://kori.ml): collect
 mobile-money payments (Orange Money, Wave, Moov) in Mali, send payouts and bulk payments,
 create payment links and checkout sessions, and verify webhooks.
 
 ```sh
-npm install @kori/node
+npm install @korisdk/node
 ```
 
 Node 18+. ESM and CommonJS. No runtime dependencies: it uses only `fetch` and `node:crypto`,
@@ -15,7 +15,7 @@ SDK holds your API secret.
 ## Quick start
 
 ```ts
-import { Kori } from '@kori/node';
+import { Kori } from '@korisdk/node';
 
 const kori = new Kori({
   apiKey: process.env.KORI_API_KEY,
