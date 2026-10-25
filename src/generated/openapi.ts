@@ -164,7 +164,8 @@ export interface paths {
          * @description Ask the mobile-money operator what happened to a collection, by the `reference`
          *     returned when you created it. Unlike `GET /transactions/{id}`, which reads Kori's
          *     stored record, this queries the operator and settles the transaction if it has
-         *     completed — so it is the authoritative answer while a payment is still open.
+         *     completed — so it is the authoritative answer while a payment is still open. Once a
+         *     payment is settled, the stored outcome is returned without asking the operator.
          *
          *     No authentication: the reference is the credential, which is what lets a hosted
          *     checkout page poll it from the customer's browser.
@@ -1517,6 +1518,18 @@ export interface operations {
                         /** @description Convenience flag, true only when `state` is `success`. */
                         status?: boolean;
                     };
+                };
+            };
+            /**
+             * @description No collection has this reference. Check for a typo: an unknown reference is
+             *     never reported as `pending`. Deposits are not looked up here.
+             */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
                 };
             };
             /** @description The operator could not be reached. Retry; do not treat as a failure. */
