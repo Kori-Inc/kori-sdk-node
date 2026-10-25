@@ -76,7 +76,7 @@ describe('authentication', () => {
 describe('environments', () => {
   it('defaults to the sandbox', () => {
     expect(new Kori({ apiKey: 'k', apiSecret: 's' }).baseUrl).toBe('https://sandbox.kori.ml');
-    expect(new Kori({ apiKey: 'k', apiSecret: 's', environment: 'live' }).baseUrl).toBe('https://dev.kori.ml');
+    expect(new Kori({ apiKey: 'k', apiSecret: 's', environment: 'live' }).baseUrl).toBe('https://gateway.kori.ml');
     expect(() => new Kori({ environment: 'prod' as never })).toThrow(/Unknown Kori environment/);
   });
 });

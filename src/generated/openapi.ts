@@ -36,7 +36,7 @@ export interface paths {
         /**
          * Generate a scoped Bearer token
          * @description Exchange your API key (`X-API-Key`) and secret (`X-API-Secret`) for a JWT
-         *     Bearer token. Optionally restrict the token to a subset of `scopes` (defaults
+         *     Bearer token. Optionally choose the token's `scopes` (defaults
          *     to `["pay","deposit","balance"]`) and set an expiry between 1 and 720 hours
          *     (default 24). Rate limited to 20 requests / 15 minutes.
          */
@@ -1243,7 +1243,7 @@ export interface operations {
             content: {
                 "application/json": {
                     /**
-                     * @description Subset of your key's scopes to embed in the token.
+                     * @description Scopes to embed in the token. Any scope may be requested; ask only for what this service uses.
                      * @example [
                      *       "pay",
                      *       "balance"

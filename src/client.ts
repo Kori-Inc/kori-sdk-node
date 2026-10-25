@@ -13,7 +13,7 @@ import type { AuthToken, Scope } from './types.js';
 import { Webhooks } from './webhooks.js';
 
 export const ENVIRONMENTS = {
-  live: 'https://dev.kori.ml',
+  live: 'https://gateway.kori.ml',
   sandbox: 'https://sandbox.kori.ml',
 } as const;
 
