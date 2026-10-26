@@ -865,6 +865,16 @@ export interface components {
             customer_phone?: string;
             /** Format: float */
             amount?: number;
+            /**
+             * Format: float
+             * @description Collections (`pay`) only: Kori's fee, set when the payment succeeds (Orange Money 3.5%, Wave 3%, Moov 3%). Null before then, and on payments settled before collection fees applied.
+             */
+            fee?: number | null;
+            /**
+             * Format: float
+             * @description Collections (`pay`) only: what was credited to your balance, `amount` minus `fee`. Null until the payment succeeds.
+             */
+            net_amount?: number | null;
             currency?: string;
             status?: components["schemas"]["TransactionStatus"];
             reference?: string;
@@ -896,11 +906,14 @@ export interface components {
             id?: number;
             /** Format: float */
             amount?: number;
-            /** Format: float */
+            /**
+             * Format: float
+             * @description 2.5% of `amount`, debited from your balance on top of it.
+             */
             fee?: number;
             /**
              * Format: float
-             * @description What the recipient receives: `amount` minus `fee`.
+             * @description What the recipient receives: the full `amount`.
              */
             net_amount?: number;
             provider_txn_id?: string | null;
