@@ -1532,6 +1532,19 @@ export interface operations {
                     "application/json": components["schemas"]["Error"];
                 };
             };
+            /**
+             * @description Your own `reference` is also used by another Kori merchant, so this
+             *     unauthenticated route cannot tell which payment you mean. Look it up with
+             *     `GET /transactions/{id}` instead. References Kori generates never collide.
+             */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
             /** @description The operator could not be reached. Retry; do not treat as a failure. */
             500: {
                 headers: {
