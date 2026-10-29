@@ -829,6 +829,15 @@ export interface components {
              * @description Redirect after cancel (hosted checkout providers).
              */
             cancel_url?: string;
+            /**
+             * @description Who pays Kori's collection fee for this payment. Defaults to your dashboard
+             *     setting (Paramètres → Paiements). `merchant`: the customer is charged `amount`
+             *     and you receive `amount` minus the fee. `customer`: the fee is added on top —
+             *     the customer is charged `amount_charged` (amount + fee) and you receive exactly
+             *     `amount`. Show the customer the total before they pay.
+             * @enum {string}
+             */
+            fee_bearer?: "merchant" | "customer";
         };
         DepositRequest: {
             /**
@@ -856,6 +865,26 @@ export interface components {
             payment_url?: string | null;
             /** Format: date-time */
             initiated_at?: string;
+            /**
+             * Format: float
+             * @description Collections only. What the customer is asked to pay — `amount`, plus the fee when `fee_bearer` is `customer`.
+             */
+            amount_charged?: number;
+            /**
+             * Format: float
+             * @description Collections only. Kori's collection fee on this payment.
+             */
+            fee?: number;
+            /**
+             * @description Collections only. Who pays the fee.
+             * @enum {string}
+             */
+            fee_bearer?: "merchant" | "customer";
+            /**
+             * Format: float
+             * @description Collections only. What you receive once the customer confirms.
+             */
+            net_amount?: number;
         };
         Transaction: {
             id?: number;
